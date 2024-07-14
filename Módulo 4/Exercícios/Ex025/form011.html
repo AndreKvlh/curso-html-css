@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #icor {
+            width: 200px;
+            height: 200px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seletor de Cor</h1>
+    <form action="cadastro.php" method="get" autocomplete="on">
+        <div class="container">
+            <div class="content" id="c1">
+                <p>
+                    <label for="ired">R</label>
+                    <input type="range" name="red" id="ired" min="0" max="255" value="0">
+                </p>
+                <p>
+                    <label for="igreen">G</label>
+                    <input type="range" name="green" id="igreen" min="0" max="255" value="0">
+                </p>
+                <p>
+                    <label for="iblue">B</label>
+                    <input type="range" name="blue" id="iblue" min="0" max="255" value="0">
+                </p>
+            </div>
+            <div class="content">
+                <input type="color" name="cor" id="icor" value="#000000">
+            </div>
+        </div>
+        <p>
+            <label for="ihexa">Código: </label>
+            <output id="ihexa">#000000</output>
+        </p>
+    </form>
+    <script>
+        var seletorR = document.getElementById('ired')
+        var seletorG = document.getElementById('igreen')
+        var seletorB = document.getElementById('iblue')
+        var seletores = [seletorR,seletorG,seletorB]
+
+        seletorR.addEventListener('input', gerarCor)
+        seletorG.addEventListener('input', gerarCor)
+        seletorB.addEventListener('input', gerarCor)
+
+        function gerarCor() {
+            var cor = document.getElementById('icor')
+            var codigo = document.getElementById('ihexa')
+
+            hexadec = '#'
+
+            for (var i = 0; i < 3; i++) {
+                nConv = Number(seletores[i].value).toString(16)
+                if (nConv.length < 2) {
+                    nConv = '0' + nConv
+                }
+                hexadec += nConv
+            }
+
+            cor.value = hexadec
+            codigo.innerHTML = hexadec
+        }
+    </script>
+</body>
+</html>
