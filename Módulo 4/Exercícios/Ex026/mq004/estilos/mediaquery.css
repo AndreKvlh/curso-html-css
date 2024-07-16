@@ -1,3 +1,84 @@
 @charset "UTF-8";
 
 /*Todas as demais mídias*/
+
+/*Pesquisar "Typical Device Breakpoints"
+------Breakpoints---------
+Pequenas telas: até 600px;
+Celular: de 600px até 768px;
+Tablet: de 768pa até 992px;
+Desktop: de 992px até 1200px;
+Grandes telas: acima de 1200px.
+*/
+
+
+/*Versão para impressão*/
+@media print {
+    * {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    body {
+        background-image: url('../imagens/back-print.jpg');
+    }
+
+    main {
+        border: 2px solid black;
+    }
+
+    main h1 {
+        text-shadow: none;
+        color: black;
+    }
+
+    #print {
+        display: block
+    }
+
+    #phone, #pc, #tablet, #tv {
+        display: none;
+    }
+}
+
+/*Versão tablet*/
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    body {
+        background-image: url('../imagens/back-tablet.jpg');
+    }
+
+    #tablet {
+        display: block
+    }
+
+    #phone, #print, #pc, #tv {
+        display: none;
+    }
+}
+
+/*Versão Desktop*/
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    body {
+        background-image: url('../imagens/back-pc.jpg');
+    }
+    #pc {
+        display: block
+    }
+
+    #phone, #print, #tablet, #tv {
+        display: none;
+    }
+}
+
+/*Versão grandes telas*/
+@media screen and (min-width: 1200px) {
+    body {
+        background-image: url('../imagens/back-tv.jpg');
+    }
+    #tv {
+        display: block
+    }
+
+    #phone, #print, #tablet, #pc {
+        display: none;
+    }
+}
